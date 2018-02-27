@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head><link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Combined.css?resources=0:Header,0:HeaderFooterSprite,0:Header.NonMtps;/Areas/Centers/Themes/StandardDevCenter/Content:0&amp;amp;v=1B9152C29A0457AFEC33526CDFADF105" xmlns="http://www.w3.org/1999/xhtml" />
+<link type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml" />
+<link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Combined.css?resources=0:Footer,0:HeaderFooterSprite,0:Footer.NonMtps,1:NewFooterSock,1:LinkList;/Areas/Centers/Themes/StandardDevCenter/Content:0,/Areas/Epx/Themes/Base/Content:1&amp;amp;v=D636919224FCD4EE55642CE3BF1E3856" xmlns="http://www.w3.org/1999/xhtml" />
+<link type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Random Hamiltonian Circuit (Cycle)</title>
+        <link href="description/Galleries.css" type="text/css" rel="Stylesheet" /><link href="description/Layout.css" type="text/css" rel="Stylesheet" /><link href="description/Brand.css" type="text/css" rel="Stylesheet" />
+        <link href="https://i1.code.msdn.s-msft.com/content/common/iframedescription.css" rel="Stylesheet" type="text/css" />
+        <script src="https://i1.code.msdn.s-msft.com/content/common/offline.js" type="text/javascript"></script>
+        <style type="text/css">
+            #projectInfo {
+                overflow: auto;
+            }
+            #longDesc {
+                clear:both;
+                margin: 25px 0 10px 0;
+            }
+
+            #SampleIndexList{
+                margin-left: 15px;
+            }
+        </style>
+    </head>
+<body>
+    <div id="offlineDescription">
+        <h1>Random Hamiltonian Circuit (Cycle)</h1>
+        <br/>
+        <div id="projectInfo">
+            <div class="section">
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Technologies">Technologies</label>
+                        <div id="Technologies">
+                            C#, Windows Forms, Visual C#, Visual Studio 2015
+                        </div>
+                    </div>
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Topics">Topics</label>
+                        <div id="Topics">
+                            C#, 2d graphics, Numerical Computing, NumericUpDown, Backtracking, Hamiltonain Circuit or Cycle
+                        </div>
+                    </div>
+                <div class="itemBarLong">
+                    <label for="Platforms">Platforms</label>
+                    <div id="Platforms">
+                        Desktop
+                    </div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="Requirements">Requirements</label>
+                    <div id="Requirements">
+                        
+                    </div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Primary language</label>
+                    <div id="LastUpdated">en-US</div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Updated</label>
+                    <div id="LastUpdated">9/15/2016</div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="License">License</label>
+                    <div id="License">
+                        <a href="license.rtf">MIT</a></div>
+                </div>
+                <div class="itemBar">
+                    <div class="viewonlinecont">
+                        <a data-link="online" href="https://code.msdn.microsoft.com/Random-Hamiltonian-Circuit-d2082cf1">View this sample online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                   
+<script type="text/javascript">
+    function initializePage() {
+        var otherTabClass = 'otherTab';
+        var hiddenPreClass = 'hidden';
+
+        var htmlDecode = function(encodedData) {
+            var decodedData = "";
+            if (encodedData) {
+                var div = document.createElement('div');
+                div.innerHTML = encodedData;
+                decodedData = div.firstChild.nodeValue.replace( /\\r\\n/ig , '\r\n');
+            }
+            return decodedData;
+        };
+                
+        Galleries.iterateElem(Galleries.findElem(null, 'div', 'scriptcode'), function (index, scriptBlock) {
+            var titleElem = Galleries.findElem(scriptBlock, 'div', 'title')[0];
+            var labelElems = Galleries.findElem(titleElem, 'span');
+            if (labelElems.length == 0) {
+                labelElems = titleElem;
+            }
+            var languageSpans = Galleries.findElem(scriptBlock, 'span', 'hidden');
+            var pres = Galleries.findElem(scriptBlock, 'pre');
+            if (languageSpans.length > 0 && pres.length > 1) {
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    var languageSpan = languageSpans[index];
+                            
+                    elem.code = codePre.innerHTML.replace( /(\r(\n)?)|((\r)?\n)/ig , '\\r\\n');
+                            
+                    codePre.className = codePre.className.replace(hiddenPreClass, '');
+                            
+                    languageSpan.parentNode.removeChild(languageSpan);
+                });
+
+                pres = Galleries.findElem(scriptBlock, 'pre');
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    if (index == 0) {
+                        scriptBlock.activeTab = 0;
+                    }
+                    else {
+                        labelSpan.className += otherTabClass;
+                        codePre.className += hiddenPreClass;
+                    }
+                    Galleries.attachEventHandler(labelSpan, 'click', function(e) {
+                        var activeTab = scriptBlock.activeTab;
+                        labelElems[activeTab].className += otherTabClass;
+                        pres[activeTab].className += hiddenPreClass;
+
+                        codePre.className = codePre.className.replace(hiddenPreClass, '');
+                        labelSpan.className = labelSpan.className.replace(otherTabClass, '');
+                        scriptBlock.activeTab = index;
+                    });
+                });
+
+                var preview = Galleries.findElem(scriptBlock, 'div', 'preview');
+                if (preview.length == 0) {
+                    preview.push(pres[pres.length - 1]);
+                }
+                Galleries.iterateElem(preview, function(index, elem) {
+                    elem.parentNode.removeChild(elem);
+                });
+
+                if (window.clipboardData && clipboardData.setData) {
+                    var copyLink = document.createElement('a');
+                    copyLink.href = 'javascript:void(0);';
+                    copyLink.className = 'copyCode';
+                    copyLink.innerHTML = 'Copy code';
+                    Galleries.attachEventHandler(copyLink, 'click', function (e) {
+                        clipboardData.setData("Text", htmlDecode(labelElems[scriptBlock.activeTab].code));
+                        return false;
+                    });
+                    scriptBlock.insertBefore(copyLink, scriptBlock.childNodes[0]);
+                }
+            }
+        });
+    }
+
+    Galleries.onWindowLoad(function(){
+        initializePage();
+    });
+
+</script>
+<div id="longDesc">
+    
+<h1>Introduction</h1>
+<p><em>This application finds a Hamiltonian Circuit through a graph that has integer weighted edges. There is no gurantee the circuit if it exists is the circuit with the minimum total cost. The graphs have 4 to 12 vertices with randomly generated edges and
+ edge weights.</em></p>
+<h1><span>Building the Sample</span></h1>
+<p><em>This project should build as is using Visual Studio 2015 Professional.</em></p>
+<p><span style="font-size:20px; font-weight:bold">Description</span></p>
+<p><em>The algorithm for determining the Hamiltonain circuit or cycle is from the website: http://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/. The code as the website name implies is a backtracking algorithm. The code is heavily documented and
+ the website provides a terse explanation of the problem and the solution. The driver program is of my own design and isbased on my previous project &quot;Random Minimum Spanning Tree&quot;. The Hamiltonian cycle problem is NP-Complete and its complexity increases with
+ increasing number of vertices. See Cormen, Leiserson, and Rivest for much more information on NP-Completeness and the problems in that class.</em></p>
+<p><em><img id="159708" width="786" height="795" src="description/Hamilton Circuit 4.PNG" alt=""><img id="159709" width="786" height="795" src="description/Hamilton Circuit 5.PNG" alt=""><img id="159710" width="786" height="795" src="description/Hamilton Circuit 6.PNG" alt="">&nbsp;</em></p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">namespace HamiltonianCircuit
+{
+    class Algorithm
+    {
+        // code from C/C&#43;&#43;
+        // http://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/
+
+        // A utility function to check if the vertex v can be added at
+        // index 'pos' in the Hamiltonian Cycle constructed so far (stored
+        // in 'path[]')
+
+        private bool IsSafe(int v, bool[,] graph, int[] path, int pos)
+        {
+            /* Check if this vertex is an adjacent vertex of the previously
+               added vertex. */
+            if (!graph[path[pos - 1], v])
+                return false;
+
+            /* Check if the vertex has already been included.
+              This step can be optimized by creating an array of size V */
+            for (int i = 0; i &lt; pos; i&#43;&#43;)
+                if (path[i] == v)
+                    return false;
+
+            return true;
+        }
+
+        /* A recursive utility function to solve hamiltonian cycle problem */
+        private bool HamCycleUtil(bool[,] graph, int V, int[] path, int pos)
+        {
+            /* base case: If all vertices are included in Hamiltonian Cycle */
+            if (pos == V)
+            {
+                // And if there is an edge from the last included vertex to the
+                // first vertex
+                if (graph[path[pos - 1], path[0]])
+                    return true;
+                else
+                    return false;
+            }
+
+            // Try different vertices as a next candidate in Hamiltonian Cycle.
+            // We don't try for 0 as we included 0 as starting point in in hamCycle()
+            for (int v = 1; v &lt; V; v&#43;&#43;)
+            {
+                // Check if this vertex can be added to Hamiltonian Cycle
+
+                if (IsSafe(v, graph, path, pos))
+                {
+                    path[pos] = v;
+
+                    // recur to construct rest of the path
+
+                    if (HamCycleUtil(graph, V, path, pos &#43; 1))
+                        return true;
+
+                    // If adding vertex v doesn't lead to a solution,
+                    // then remove it
+                    path[pos] = -1;
+                }
+            }
+
+            // If no vertex can be added to Hamiltonian Cycle constructed so far,
+            // then return false
+            return false;
+        }
+
+        // This function solves the Hamiltonian Cycle problem using Backtracking.
+        // It mainly uses HamCycleUtil() to solve the problem. It returns false
+        // if there is no Hamiltonian Cycle possible, otherwise return true and
+        // prints the path. Please note that there may be more than one solutions,
+        // this function prints one of the feasible solutions.
+        public bool HamCycle(bool[,] graph, int V, out int[] path)
+        {
+            path = new int[V];
+
+            for (int i = 0; i &lt; V; i&#43;&#43;)
+                path[i] = -1;
+
+           // Let us put vertex 0 as the first vertex in the path. If there is
+           // a Hamiltonian Cycle, then the path can be started from any point
+           // of the cycle as the graph is undirected
+
+            path[0] = 0;
+
+            if (HamCycleUtil(graph, V, path, 1) == false)
+                return false;
+
+            return true;
+        }
+
+    }
+}</pre>
+<div class="preview">
+<pre class="csharp"><span class="cs__keyword">namespace</span>&nbsp;HamiltonianCircuit&nbsp;
+{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">class</span>&nbsp;Algorithm&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;code&nbsp;from&nbsp;C/C&#43;&#43;</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;http://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/</span>&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;A&nbsp;utility&nbsp;function&nbsp;to&nbsp;check&nbsp;if&nbsp;the&nbsp;vertex&nbsp;v&nbsp;can&nbsp;be&nbsp;added&nbsp;at</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;index&nbsp;'pos'&nbsp;in&nbsp;the&nbsp;Hamiltonian&nbsp;Cycle&nbsp;constructed&nbsp;so&nbsp;far&nbsp;(stored</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;in&nbsp;'path[]')</span>&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">private</span>&nbsp;<span class="cs__keyword">bool</span>&nbsp;IsSafe(<span class="cs__keyword">int</span>&nbsp;v,&nbsp;<span class="cs__keyword">bool</span>[,]&nbsp;graph,&nbsp;<span class="cs__keyword">int</span>[]&nbsp;path,&nbsp;<span class="cs__keyword">int</span>&nbsp;pos)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__mlcom">/*&nbsp;Check&nbsp;if&nbsp;this&nbsp;vertex&nbsp;is&nbsp;an&nbsp;adjacent&nbsp;vertex&nbsp;of&nbsp;the&nbsp;previously&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;added&nbsp;vertex.&nbsp;*/</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(!graph[path[pos&nbsp;-&nbsp;<span class="cs__number">1</span>],&nbsp;v])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">false</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__mlcom">/*&nbsp;Check&nbsp;if&nbsp;the&nbsp;vertex&nbsp;has&nbsp;already&nbsp;been&nbsp;included.&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;step&nbsp;can&nbsp;be&nbsp;optimized&nbsp;by&nbsp;creating&nbsp;an&nbsp;array&nbsp;of&nbsp;size&nbsp;V&nbsp;*/</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">for</span>&nbsp;(<span class="cs__keyword">int</span>&nbsp;i&nbsp;=&nbsp;<span class="cs__number">0</span>;&nbsp;i&nbsp;&lt;&nbsp;pos;&nbsp;i&#43;&#43;)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(path[i]&nbsp;==&nbsp;v)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">false</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">true</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__mlcom">/*&nbsp;A&nbsp;recursive&nbsp;utility&nbsp;function&nbsp;to&nbsp;solve&nbsp;hamiltonian&nbsp;cycle&nbsp;problem&nbsp;*/</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">private</span>&nbsp;<span class="cs__keyword">bool</span>&nbsp;HamCycleUtil(<span class="cs__keyword">bool</span>[,]&nbsp;graph,&nbsp;<span class="cs__keyword">int</span>&nbsp;V,&nbsp;<span class="cs__keyword">int</span>[]&nbsp;path,&nbsp;<span class="cs__keyword">int</span>&nbsp;pos)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__mlcom">/*&nbsp;base&nbsp;case:&nbsp;If&nbsp;all&nbsp;vertices&nbsp;are&nbsp;included&nbsp;in&nbsp;Hamiltonian&nbsp;Cycle&nbsp;*/</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(pos&nbsp;==&nbsp;V)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;And&nbsp;if&nbsp;there&nbsp;is&nbsp;an&nbsp;edge&nbsp;from&nbsp;the&nbsp;last&nbsp;included&nbsp;vertex&nbsp;to&nbsp;the</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;first&nbsp;vertex</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(graph[path[pos&nbsp;-&nbsp;<span class="cs__number">1</span>],&nbsp;path[<span class="cs__number">0</span>]])&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">true</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">else</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">false</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;Try&nbsp;different&nbsp;vertices&nbsp;as&nbsp;a&nbsp;next&nbsp;candidate&nbsp;in&nbsp;Hamiltonian&nbsp;Cycle.</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;We&nbsp;don't&nbsp;try&nbsp;for&nbsp;0&nbsp;as&nbsp;we&nbsp;included&nbsp;0&nbsp;as&nbsp;starting&nbsp;point&nbsp;in&nbsp;in&nbsp;hamCycle()</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">for</span>&nbsp;(<span class="cs__keyword">int</span>&nbsp;v&nbsp;=&nbsp;<span class="cs__number">1</span>;&nbsp;v&nbsp;&lt;&nbsp;V;&nbsp;v&#43;&#43;)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;Check&nbsp;if&nbsp;this&nbsp;vertex&nbsp;can&nbsp;be&nbsp;added&nbsp;to&nbsp;Hamiltonian&nbsp;Cycle</span>&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(IsSafe(v,&nbsp;graph,&nbsp;path,&nbsp;pos))&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path[pos]&nbsp;=&nbsp;v;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;recur&nbsp;to&nbsp;construct&nbsp;rest&nbsp;of&nbsp;the&nbsp;path</span>&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(HamCycleUtil(graph,&nbsp;V,&nbsp;path,&nbsp;pos&nbsp;&#43;&nbsp;<span class="cs__number">1</span>))&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">true</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;If&nbsp;adding&nbsp;vertex&nbsp;v&nbsp;doesn't&nbsp;lead&nbsp;to&nbsp;a&nbsp;solution,</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;then&nbsp;remove&nbsp;it</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path[pos]&nbsp;=&nbsp;-<span class="cs__number">1</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;If&nbsp;no&nbsp;vertex&nbsp;can&nbsp;be&nbsp;added&nbsp;to&nbsp;Hamiltonian&nbsp;Cycle&nbsp;constructed&nbsp;so&nbsp;far,</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;then&nbsp;return&nbsp;false</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">false</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;This&nbsp;function&nbsp;solves&nbsp;the&nbsp;Hamiltonian&nbsp;Cycle&nbsp;problem&nbsp;using&nbsp;Backtracking.</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;It&nbsp;mainly&nbsp;uses&nbsp;HamCycleUtil()&nbsp;to&nbsp;solve&nbsp;the&nbsp;problem.&nbsp;It&nbsp;returns&nbsp;false</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;Hamiltonian&nbsp;Cycle&nbsp;possible,&nbsp;otherwise&nbsp;return&nbsp;true&nbsp;and</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;prints&nbsp;the&nbsp;path.&nbsp;Please&nbsp;note&nbsp;that&nbsp;there&nbsp;may&nbsp;be&nbsp;more&nbsp;than&nbsp;one&nbsp;solutions,</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;this&nbsp;function&nbsp;prints&nbsp;one&nbsp;of&nbsp;the&nbsp;feasible&nbsp;solutions.</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">public</span>&nbsp;<span class="cs__keyword">bool</span>&nbsp;HamCycle(<span class="cs__keyword">bool</span>[,]&nbsp;graph,&nbsp;<span class="cs__keyword">int</span>&nbsp;V,&nbsp;<span class="cs__keyword">out</span>&nbsp;<span class="cs__keyword">int</span>[]&nbsp;path)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;<span class="cs__keyword">int</span>[V];&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">for</span>&nbsp;(<span class="cs__keyword">int</span>&nbsp;i&nbsp;=&nbsp;<span class="cs__number">0</span>;&nbsp;i&nbsp;&lt;&nbsp;V;&nbsp;i&#43;&#43;)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path[i]&nbsp;=&nbsp;-<span class="cs__number">1</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;Let&nbsp;us&nbsp;put&nbsp;vertex&nbsp;0&nbsp;as&nbsp;the&nbsp;first&nbsp;vertex&nbsp;in&nbsp;the&nbsp;path.&nbsp;If&nbsp;there&nbsp;is</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;a&nbsp;Hamiltonian&nbsp;Cycle,&nbsp;then&nbsp;the&nbsp;path&nbsp;can&nbsp;be&nbsp;started&nbsp;from&nbsp;any&nbsp;point</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;of&nbsp;the&nbsp;cycle&nbsp;as&nbsp;the&nbsp;graph&nbsp;is&nbsp;undirected</span>&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path[<span class="cs__number">0</span>]&nbsp;=&nbsp;<span class="cs__number">0</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(HamCycleUtil(graph,&nbsp;V,&nbsp;path,&nbsp;<span class="cs__number">1</span>)&nbsp;==&nbsp;<span class="cs__keyword">false</span>)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">false</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">return</span>&nbsp;<span class="cs__keyword">true</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+}</pre>
+</div>
+</div>
+</div>
+<h1><span>Source Code Files</span></h1>
+<ul>
+<li><em>Algorithm.cs -&nbsp;where the algorithm resides.</em> </li><li><em><em>MainForm.cs -&nbsp;the main and only form of the application for input and output.</em></em>
+</li></ul>
+<h1>More Information</h1>
+<p><em>For more information on Hamiltonain circuits or cycles, see &quot;Introduction to Algorithms&quot; by Cormen, Leiserson, and Rivest or search the web. The CACM Algorithm 595 finds multiple Hamitonian circuits, but it is hard to understand due to the spaghetti
+ code implementation in FORTRAN IV.</em></p>
+
+</div>
+
+
+    </div>
+</body>
+</html>

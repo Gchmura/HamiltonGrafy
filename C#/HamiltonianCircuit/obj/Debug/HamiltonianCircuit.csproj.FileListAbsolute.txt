@@ -1,0 +1,18 @@
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe.config
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.MainForm.resources
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.Properties.Resources.resources
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.GenerateResource.Cache
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.pdb
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
+c:\users\james\documents\visual studio 2015\Projects\HamiltonianCircuit\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe.config
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.pdb
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csprojResolveAssemblyReference.cache
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.MainForm.resources
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.Properties.Resources.resources
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.GenerateResource.Cache
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.CoreCompileInputs.cache
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
+C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
