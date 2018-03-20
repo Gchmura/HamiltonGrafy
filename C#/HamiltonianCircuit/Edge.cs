@@ -15,6 +15,10 @@ namespace HamiltonianCircuit
             Wt = wt;
         }
 
+        public Edge()
+        {
+        }
+
         public int CompareTo(object obj)
         {
             Edge other = (Edge)obj;

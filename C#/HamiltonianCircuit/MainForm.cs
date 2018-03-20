@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HamiltonianCircuit.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -23,7 +24,8 @@ namespace HamiltonianCircuit
             Color.Tan,
             Color.Plum,
             Color.Teal,
-            Color.Yellow
+            Color.Yellow,
+            Color.Azure
             };
         private List<Edge> E, F;
         private List<Vertex> V;
@@ -132,7 +134,7 @@ namespace HamiltonianCircuit
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Generate_Click(object sender, EventArgs e)
         {
             generate = true;
             button2.Enabled = true;
@@ -152,7 +154,8 @@ namespace HamiltonianCircuit
 
             for (int i = 0; i < numVers; i++)
             {
-                int numEdges = random.Next(numVers - 1);
+                //int numEdges = random.Next(numVers - 1);
+                int numEdges = RandomService.GetNoOfEdges(numVers - 1);
 
                 while (numEdges < 2)
                     numEdges = random.Next(numVers - 1);
@@ -214,6 +217,8 @@ namespace HamiltonianCircuit
 
             panel1.Invalidate();
         }
+
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
