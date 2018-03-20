@@ -16,3 +16,13 @@ C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianC
 C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.CoreCompileInputs.cache
 C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
 C:\Users\Liberator\Desktop\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe.config
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.pdb
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csprojResolveAssemblyReference.cache
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.MainForm.resources
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.Properties.Resources.resources
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.GenerateResource.Cache
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.CoreCompileInputs.cache
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
+C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb

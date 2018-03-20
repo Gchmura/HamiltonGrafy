@@ -61,7 +61,7 @@ namespace HamiltonianCircuit
 
                 int Width = panel1.Width;
                 int Height = panel1.Height;
-                Pen pen = new Pen(Color.Red);
+                Pen pen = new Pen(Color.Blue,2);
 
                 n = V.Count;
 
