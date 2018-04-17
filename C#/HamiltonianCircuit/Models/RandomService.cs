@@ -19,7 +19,7 @@ namespace HamiltonianCircuit.Models
             {
                 if (probability <= ConstsValues.percentageProbability)
                 {
-                    i++;
+                    numberOfEdges++;
                 }
               
             }
