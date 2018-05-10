@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -115,17 +116,6 @@ namespace Grafy_mag
             _zoomctrl.ZoomToFill();
         }
 
-        private void Btn_generate_Click(object sender, EventArgs e)
-        {
-            _gArea.ClearLayout(true, true, false);
-            _gArea.LogicCore.Graph.Clear();
-            _gArea.LogicCore.Graph = GenerateGraph();
-            _gArea.GenerateGraph(true);
-            _gArea.SetVerticesDrag(true, true);
-            _zoomctrl.ZoomToFill();
-
-            comboBox1.SelectedItem = "Blue";
-        }
         private GraphGeneric GenerateGraph()
         {
             Vertices = new List<DataVertex>();
@@ -193,12 +183,163 @@ namespace Grafy_mag
             return permutationsMatrix;
         }
 
+        private void TestTourney()
+        {
+            var pop = new Population(121, Vertices.Count);
+            var split = pop.Split(3);
+            var t1 = Tourney.Eliminate(split[0], MakePermutationsMatrix(0));
+            var t2 = Tourney.Eliminate(split[1], MakePermutationsMatrix(1));
+            var t3 = Tourney.Eliminate(split[2], MakePermutationsMatrix(2));
+        }
+
+        private void TestSplit()
+        {
+            var pop = new Population(120, Vertices.Count);
+            var split = pop.Split(3);
+        }
+
+        private void TestMut()
+        {
+            int[][] cycles = new int[100][];
+            List<Tuple<int, int[]>> mutated = new List<Tuple<int, int[]>>();
+            for (int i = 0; i < 100; i++)
+            {
+                cycles[i] = Helper.GetRandomCycle(Vertices.Count);
+                var mut = MutationNodeSwap.Mutation(new Models.Cycle() { Nodes = (int[])(cycles[i].Clone()) }, 0.5);
+                if (!mut.Nodes.IsSame(cycles[i]))
+                {
+                    mutated.Add(new Tuple<int, int[]>(i, mut.Nodes));
+                }
+            }
+        }
+
+        private void GenerateEdges()
+        {
+            _gArea.GenerateAllEdges();
+
+            foreach (var item in _gArea.EdgesList)
+            {
+                item.Value.ShowLabel = item.Key.IsVisible;
+                if (!item.Key.IsVisible)
+                {
+                    item.Value.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    item.Value.Visibility = Visibility.Visible;
+                }
+            }
+
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DataEdge[] edges = new DataEdge[Vertices.Count];
+
+            foreach (var item in _gArea.EdgesList)
+            {
+                if (!edges.Contains(item.Key))
+                {
+                    if (item.Key.EdgeColor == Colors.Red)
+                    {
+                        item.Key.EdgeColor = Colors.Red;
+                    }
+                    else
+                    {
+                        item.Key.EdgeColor = changeEdgeColor(comboBox1.Text);
+                    }
+                }
+            }
+            _gArea.GenerateAllEdges();
+
+            TestMut();
+            TestSplit();
+            TestTourney();
+        }
+
+        public Color changeEdgeColor(string choice)
+        {
+            switch (choice)
+            {
+                case "Blue":
+                    return Colors.Blue;
+                case "DarkGreen":
+                    return Colors.DarkGreen;
+                case "Black":
+                    return Colors.Black;
+                case "DarkViolet":
+                    return Colors.DarkViolet;
+                case "Coral":
+                    return Colors.Coral;
+                case "Gold":
+                    return Colors.Gold;
+            }
+
+            return Colors.Blue;
+        }
+
+        private void btn_generate_Click_1(object sender, EventArgs e)
+        {
+            _gArea.ClearLayout(true, true, false);
+            _gArea.LogicCore.Graph.Clear();
+            _gArea.LogicCore.Graph = GenerateGraph();
+            _gArea.GenerateGraph(true);
+            _gArea.SetVerticesDrag(true, true);
+            _zoomctrl.ZoomToFill();
+
+            comboBox1.SelectedItem = "Blue";
+        }
+
         private void Btn_reload_Click(object sender, EventArgs e)
         {
             _gArea.RelayoutGraph();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_nxtWeights_Click(object sender, EventArgs e)
+        {
+            layer++;
+            if (layer > functions - 1)
+            {
+                layer = 0;
+            }
+            lbl_weight_layer.Text = (layer + 1).ToString();
+            int[][] weights = MakePermutationsMatrix(layer);
+
+            DataEdge edge;
+            for (int i = 0; i < Vertices.Count; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    _gArea.LogicCore.Graph.TryGetEdge(Vertices[j], Vertices[i], out edge);
+                    edge.Weight = weights[i][j];
+                }
+            }
+            GenerateEdges();
+        }
+
+        private void Btn_start_Click_1(object sender, EventArgs e)
+        {
+            double mutationProbability = Convert.ToDouble(txb_mut_prob.Text, CultureInfo.InvariantCulture);
+            int popCount = Convert.ToInt32(txb_pop_size.Text, CultureInfo.InvariantCulture);
+            int iterations = Convert.ToInt32(txb_iter_count.Text, CultureInfo.InvariantCulture);
+
+            var pop = new Population(popCount, Vertices.Count);
+            int[][][] matrices = new int[functions][][];
+            for (int i = 0; i < functions; i++)
+            {
+                matrices[i] = MakePermutationsMatrix(i);
+            }
+
+            int[] sums = new int[iterations + 1];
+            sums[0] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
+            for (int i = 1; i <= iterations; i++)
+            {
+                pop = GeneticIteration.Next(pop, functions, matrices, mutationProbability);
+                sums[i] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
+            }
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
         {
             hideOtherEdges = !hideOtherEdges;
             int[] cycle = Helper.GetRandomCycle(Vertices.Count);
@@ -247,145 +388,6 @@ namespace Grafy_mag
             TestMut();
             TestSplit();
             TestTourney();
-        }
-
-        private void TestTourney()
-        {
-            var pop = new Population(121, Vertices.Count);
-            var split = pop.Split(3);
-            var t1 = Tourney.Eliminate(split[0], MakePermutationsMatrix(0));
-            var t2 = Tourney.Eliminate(split[1], MakePermutationsMatrix(1));
-            var t3 = Tourney.Eliminate(split[2], MakePermutationsMatrix(2));
-        }
-
-        private void TestSplit()
-        {
-            var pop = new Population(120, Vertices.Count);
-            var split = pop.Split(3);
-        }
-
-        private void TestMut()
-        {
-            int[][] cycles = new int[100][];
-            List<Tuple<int, int[]>> mutated = new List<Tuple<int, int[]>>();
-            for (int i = 0; i < 100; i++)
-            {
-                cycles[i] = Helper.GetRandomCycle(Vertices.Count);
-                var mut = MutationNodeSwap.Mutation(new Models.Cycle() { Nodes = (int[])(cycles[i].Clone()) }, 0.5);
-                if (!mut.Nodes.IsSame(cycles[i]))
-                {
-                    mutated.Add(new Tuple<int, int[]>(i, mut.Nodes));
-                }
-            }
-        }
-
-        private void btn_next_weights_Click(object sender, EventArgs e)
-        {
-            layer++;
-            if (layer > functions - 1)
-            {
-                layer = 0;
-            }
-            lbl_weight_layer.Text = (layer + 1).ToString();
-            int[][] weights = MakePermutationsMatrix(layer);
-
-            DataEdge edge;
-            for (int i = 0; i < Vertices.Count; i++)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    _gArea.LogicCore.Graph.TryGetEdge(Vertices[j], Vertices[i], out edge);
-                    edge.Weight = weights[i][j];
-                }
-            }
-            GenerateEdges();
-        }
-
-        private void GenerateEdges()
-        {
-            _gArea.GenerateAllEdges();
-
-            foreach (var item in _gArea.EdgesList)
-            {
-                item.Value.ShowLabel = item.Key.IsVisible;
-                if (!item.Key.IsVisible)
-                {
-                    item.Value.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    item.Value.Visibility = Visibility.Visible;
-                }
-            }
-
-        }
-
-        private void btn_start_Click(object sender, EventArgs e)
-        {
-            double mutationProbability = Convert.ToDouble(txb_mut_prob.Text, CultureInfo.InvariantCulture);
-            int popCount = Convert.ToInt32(txb_pop_size.Text, CultureInfo.InvariantCulture);
-            int iterations = Convert.ToInt32(txb_iter_count.Text, CultureInfo.InvariantCulture);
-
-            var pop = new Population(popCount, Vertices.Count);
-            int[][][] matrices = new int[functions][][];
-            for (int i = 0; i < functions; i++)
-            {
-                matrices[i] = MakePermutationsMatrix(i);
-            }
-
-            int[] sums = new int[iterations + 1];
-            sums[0] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
-            for (int i = 1; i <= iterations; i++)
-            {
-                pop = GeneticIteration.Next(pop, functions, matrices, mutationProbability);
-                sums[i] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
-            }
-        }
-
-        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
-        {
-            DataEdge[] edges = new DataEdge[Vertices.Count];
-
-            foreach (var item in _gArea.EdgesList)
-            {
-                if (!edges.Contains(item.Key))
-                {
-                    if (item.Key.EdgeColor == Colors.Red)
-                    {
-                        item.Key.EdgeColor = Colors.Red;
-                    }
-                    else
-                    {
-                        item.Key.EdgeColor = changeEdgeColor(comboBox1.Text);
-                    }
-                }
-            }
-            _gArea.GenerateAllEdges();
-
-            TestMut();
-            TestSplit();
-            TestTourney();
-        }
-
-        public Color changeEdgeColor(string choice)
-        {
-            switch (choice)
-            {
-                case "Blue":
-                    return Colors.Blue;
-                case "DarkGreen":
-                    return Colors.DarkGreen;
-                case "Black":
-                    return Colors.Black;
-                case "DarkViolet":
-                    return Colors.DarkViolet;
-                case "Coral":
-                    return Colors.Coral;
-                case "Gold":
-                    return Colors.Gold;
-            }
-
-            return Colors.Blue;
         }
     }
 
