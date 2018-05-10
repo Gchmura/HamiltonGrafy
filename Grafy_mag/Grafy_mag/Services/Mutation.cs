@@ -11,7 +11,7 @@ namespace Grafy_mag.Services
     {
         public static Cycle Mutation(Cycle source, double mutationProbability)
         {
-            int cycleLength = source.Nodes.Length;
+            var cycleLength = source.Nodes.Length;
 
             if (cycleLength < 2)
                 return source;
@@ -19,14 +19,14 @@ namespace Grafy_mag.Services
             if (RandomHelper.NextDouble() > mutationProbability)
                 return source;
 
-            int pos1 = RandomHelper.NextInt(0, cycleLength - 1);
+            var pos1 = RandomHelper.NextInt(0, cycleLength - 1);
             int pos2;
             do
             {
                 pos2 = RandomHelper.NextInt(0, cycleLength - 1);
             } while (pos2 == pos1);
 
-            int tmp = source.Nodes[pos1];
+            var tmp = source.Nodes[pos1];
             source.Nodes[pos1] = source.Nodes[pos2];
             source.Nodes[pos2] = tmp;
 

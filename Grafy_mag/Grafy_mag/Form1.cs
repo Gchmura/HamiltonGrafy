@@ -21,6 +21,8 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Media;
+using Color = System.Windows.Media.Color;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Grafy_mag
 {
@@ -51,7 +53,7 @@ namespace Grafy_mag
             for (int i = 0; i < functions; i++)
             {
                 InputPermutations[i] = new List<string[]>();
-                using (var reader = new StreamReader(@"..\..\permutacje"+(i+1)+".csv"))
+                using (var reader = new StreamReader(@"..\..\permutacje" + (i + 1) + ".csv"))
                 {
                     while (!reader.EndOfStream)
                     {
@@ -61,7 +63,7 @@ namespace Grafy_mag
                         InputPermutations[i].Add(values);
                     }
                 }
-            }                           
+            }
         }
 
         void Form1_Load(object sender, EventArgs e)
@@ -79,15 +81,15 @@ namespace Grafy_mag
             var logic = new GXLogicCore<DataVertex, DataEdge, BidirectionalGraph<DataVertex, DataEdge>>();
             _gArea = new GraphAreaGeneric
             {
-                 //EnableWinFormsHostingMode = false,
+                //EnableWinFormsHostingMode = false,
                 LogicCore = logic,
                 EdgeLabelFactory = new DefaultEdgelabelFactory()
-            }; 
+            };
             _gArea.ShowAllEdgesLabels(true);
             _gArea.SetEdgesDashStyle(EdgeDashStyle.Solid);
             _gArea.ShowAllEdgesArrows(false);
 
-            logic.Graph = GenerateGraph();           
+            logic.Graph = GenerateGraph();
             logic.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.LinLog;
             logic.DefaultLayoutAlgorithmParams = logic.AlgorithmFactory.CreateLayoutParameters(LayoutAlgorithmTypeEnum.LinLog);
             //((LinLogLayoutParameters)logic.DefaultLayoutAlgorithmParams). = 100;
@@ -111,24 +113,25 @@ namespace Grafy_mag
         void gArea_RelayoutFinished(object sender, EventArgs e)
         {
             _zoomctrl.ZoomToFill();
-        }     
+        }
 
         private void Btn_generate_Click(object sender, EventArgs e)
         {
-            _gArea.ClearLayout(true,true,false);
+            _gArea.ClearLayout(true, true, false);
             _gArea.LogicCore.Graph.Clear();
             _gArea.LogicCore.Graph = GenerateGraph();
             _gArea.GenerateGraph(true);
             _gArea.SetVerticesDrag(true, true);
             _zoomctrl.ZoomToFill();
-            //_gArea.RelayoutGraph();
-        }        
+
+            comboBox1.SelectedItem = "Blue";
+        }
         private GraphGeneric GenerateGraph()
         {
             Vertices = new List<DataVertex>();
             var dataGraph = new GraphGeneric();
-            int nodeCount = InputPermutations[0].Count;
-            double probability = Convert.ToDouble(txb_prob.Text, CultureInfo.InvariantCulture);
+            var nodeCount = InputPermutations[0].Count;
+            var probability = Convert.ToDouble(txb_prob.Text, CultureInfo.InvariantCulture);
 
             LackingEdges = new List<int>[nodeCount];
             for (int i = 0; i < nodeCount; i++)
@@ -143,7 +146,8 @@ namespace Grafy_mag
                 }
             }
 
-            int[][] permutationsMatrix = MakePermutationsMatrix(0);           
+            int[][] permutationsMatrix = MakePermutationsMatrix(0);
+
             for (int i = 0; i < nodeCount; i++)
             {
                 var dataVertex = new DataVertex(i.ToString());
@@ -157,7 +161,7 @@ namespace Grafy_mag
                 {
                     if (permutationsMatrix[i][j] >= penalty)
                     {
-                        dataGraph.AddEdge(new DataEdge(Vertices[j], Vertices[i], permutationsMatrix[i][j]) {EdgeColor = Colors.Red} );
+                        dataGraph.AddEdge(new DataEdge(Vertices[j], Vertices[i], permutationsMatrix[i][j]) { EdgeColor = Colors.Red });
                     }
                     dataGraph.AddEdge(new DataEdge(Vertices[j], Vertices[i], permutationsMatrix[i][j]));
                 }
@@ -165,10 +169,12 @@ namespace Grafy_mag
 
             return dataGraph;
         }
+
         int[][] MakePermutationsMatrix(int functionNum)
         {
-            int nodeCount = InputPermutations[0].Count;
+            var nodeCount = InputPermutations[0].Count;
             int[][] permutationsMatrix = new int[nodeCount][];
+
             for (int i = 0; i < nodeCount; i++)
             {
                 permutationsMatrix[i] = new int[i];
@@ -215,7 +221,7 @@ namespace Grafy_mag
                 edges[Vertices.Count - 1] = edge;
 
                 _gArea.GenerateAllEdges();
-            }           
+            }
 
             foreach (var item in _gArea.EdgesList)
             {
@@ -225,16 +231,16 @@ namespace Grafy_mag
                     item.Key.IsVisible = !hideOtherEdges;
                     if (item.Key.EdgeColor != Colors.Red)
                     {
-                        item.Key.EdgeColor = Colors.Blue;
-                    }                    
+                        item.Key.EdgeColor = changeEdgeColor(comboBox1.Text);
+                    }
                     if (hideOtherEdges)
-                    {                       
+                    {
                         item.Value.Visibility = Visibility.Hidden;
                     }
                     else
                     {
                         item.Value.Visibility = Visibility.Visible;
-                    }                   
+                    }
                 }
             }
 
@@ -276,11 +282,11 @@ namespace Grafy_mag
         private void btn_next_weights_Click(object sender, EventArgs e)
         {
             layer++;
-            if (layer > functions-1)
+            if (layer > functions - 1)
             {
                 layer = 0;
             }
-            lbl_weight_layer.Text = (layer +1).ToString();
+            lbl_weight_layer.Text = (layer + 1).ToString();
             int[][] weights = MakePermutationsMatrix(layer);
 
             DataEdge edge;
@@ -290,7 +296,7 @@ namespace Grafy_mag
                 {
                     _gArea.LogicCore.Graph.TryGetEdge(Vertices[j], Vertices[i], out edge);
                     edge.Weight = weights[i][j];
-                }               
+                }
             }
             GenerateEdges();
         }
@@ -334,6 +340,52 @@ namespace Grafy_mag
                 pop = GeneticIteration.Next(pop, functions, matrices, mutationProbability);
                 sums[i] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
             }
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            DataEdge[] edges = new DataEdge[Vertices.Count];
+
+            foreach (var item in _gArea.EdgesList)
+            {
+                if (!edges.Contains(item.Key))
+                {
+                    if (item.Key.EdgeColor == Colors.Red)
+                    {
+                        item.Key.EdgeColor = Colors.Red;
+                    }
+                    else
+                    {
+                        item.Key.EdgeColor = changeEdgeColor(comboBox1.Text);
+                    }
+                }
+            }
+            _gArea.GenerateAllEdges();
+
+            TestMut();
+            TestSplit();
+            TestTourney();
+        }
+
+        public Color changeEdgeColor(string choice)
+        {
+            switch (choice)
+            {
+                case "Blue":
+                    return Colors.Blue;
+                case "DarkGreen":
+                    return Colors.DarkGreen;
+                case "Black":
+                    return Colors.Black;
+                case "DarkViolet":
+                    return Colors.DarkViolet;
+                case "Coral":
+                    return Colors.Coral;
+                case "Gold":
+                    return Colors.Gold;
+            }
+
+            return Colors.Blue;
         }
     }
 

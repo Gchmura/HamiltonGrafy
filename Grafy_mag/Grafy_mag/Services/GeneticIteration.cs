@@ -18,13 +18,13 @@ namespace Grafy_mag.Services
 
             var split = starting.Split(functions);
 
-            List<Cycle>[] Winners = new List<Cycle>[functions];
+            List<Cycle>[] winners = new List<Cycle>[functions];
             for (int i = 0; i < functions; i++)
             {
-                Winners[i] = Tourney.Eliminate(split[i], permutationMatrices[i]);
+                winners[i] = Tourney.Eliminate(split[i], permutationMatrices[i]);
             }
-            Population NewPop = new Population(starting.Cycles.Count - Winners.Sum(x => x.Count), starting.NodeCount);
-            NewPop.Cycles.AddRange(Winners.SelectMany(x => x));
+            Population NewPop = new Population(starting.Cycles.Count - winners.Sum(x => x.Count), starting.NodeCount);
+            NewPop.Cycles.AddRange(winners.SelectMany(x => x));
 
             return NewPop;
         }

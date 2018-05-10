@@ -13,7 +13,7 @@ namespace Grafy_mag.Services
         {
             if (nodeS < nodeF)
             {
-                int t = nodeF;
+                var t = nodeF;
                 nodeF = nodeS;
                 nodeS = t;
             }
@@ -30,17 +30,17 @@ namespace Grafy_mag.Services
 
         public static int[] GetRandomCycle(int nodeCount)
         {
-            Random R = new Random();
-            int[] cycle = new int[nodeCount + 1];
-            List<int> nodesToRoll = new List<int>(nodeCount);
-            for (int i = 0; i < nodeCount; i++)
+            var r = new Random();
+            var cycle = new int[nodeCount + 1];
+            var nodesToRoll = new List<int>(nodeCount);
+            for (var i = 0; i < nodeCount; i++)
             {
                 nodesToRoll.Add(i);
             }
 
-            for (int i = 0; i < nodeCount; i++)
+            for (var i = 0; i < nodeCount; i++)
             {
-                int rolledIndex = R.Next(nodesToRoll.Count);
+                var rolledIndex = r.Next(nodesToRoll.Count);
                 cycle[i] = nodesToRoll[rolledIndex];
                 nodesToRoll.RemoveAt(rolledIndex);
             }
@@ -67,8 +67,9 @@ namespace Grafy_mag.Services
 
         public static int CountCost(int[][] permutationsMatrix, int[] cycle)
         {
-            int cost = 0;
-            for (int i = 0; i < permutationsMatrix.GetLength(0); i++)
+            var cost = 0;
+
+            for (var i = 0; i < permutationsMatrix.GetLength(0); i++)
             {
                 var nodes = Helper.OrderNodes(cycle[i], cycle[i + 1]);
                 cost += permutationsMatrix[nodes.Item2][nodes.Item1];
@@ -83,7 +84,7 @@ namespace Grafy_mag.Services
                 return false;
             }
 
-            for (int i = 0; i < c.Length; i++)
+            for (var i = 0; i < c.Length; i++)
             {
                 if (c[i] != other[i])
                 {

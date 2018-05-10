@@ -11,8 +11,10 @@ namespace Grafy_mag.Services
     {
         public static List<Cycle> CrossCycles(List<Cycle> pairingCycles)
         {
-            int cyclesCount = pairingCycles.Count;
-            List<Cycle> toReturn = new List<Cycle>();
+            var cyclesCount = pairingCycles.Count;
+
+            var toReturn = new List<Cycle>();
+
             if ((pairingCycles.Count % 2) != 0)
             {
                 toReturn.Add(pairingCycles[pairingCycles.Count - 1]);

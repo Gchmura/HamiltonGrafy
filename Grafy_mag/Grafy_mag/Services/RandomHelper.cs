@@ -8,20 +8,20 @@ namespace Grafy_mag.Services
 {
     public static class RandomHelper
     {
-        private static Random rd = new Random();
+        private static readonly Random Rand = new Random();
 
-        static public int NextBitValue(double p = 0.5)
+        public static int NextBitValue(double p = 0.5)
         {
-            return rd.NextDouble() <= p ? 1 : 0;
+            return Rand.NextDouble() <= p ? 1 : 0;
         }
-        static public double NextDouble()
+        public static double NextDouble()
         {
-            return rd.NextDouble();
+            return Rand.NextDouble();
         }
 
-        static public int NextInt(int start, int stop)
+        public static int NextInt(int start, int stop)
         {
-            return rd.Next(start, stop + 1);
+            return Rand.Next(start, stop + 1);
         }
     }
 }
