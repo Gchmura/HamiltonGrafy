@@ -26,3 +26,6 @@ C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug
 C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.CoreCompileInputs.cache
 C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
 C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
+E:\repositories\HamiltonGrafy\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe.config
+E:\repositories\HamiltonGrafy\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
+E:\repositories\HamiltonGrafy\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
