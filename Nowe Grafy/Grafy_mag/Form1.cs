@@ -22,6 +22,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Media;
+using HamiltonianCircuit;
 using Color = System.Windows.Media.Color;
 using MessageBox = System.Windows.MessageBox;
 
@@ -426,10 +427,19 @@ namespace Grafy_mag
 			TestTourney();
 		}
 
+        private void roundButton2_Click(object sender, EventArgs e)
+        {
+            MainForm CycleHorm = new MainForm();
+            CycleHorm.Show();
+        }
 
-	}
+        private void roundButton1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Users\"+ Environment.UserName + @"\Desktop\HamiltonGrafy\Nowe Grafy\Grafy_mag\permutacje\file1.csv");
+        }
+    }
 
-	public class EdgeColorConverter : IValueConverter
+    public class EdgeColorConverter : IValueConverter
 	{
 
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

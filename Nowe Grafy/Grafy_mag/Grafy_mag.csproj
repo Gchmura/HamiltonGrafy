@@ -130,5 +130,11 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Stare Grafy\HamiltonianCircuit\HamiltonianCircuit.csproj">
+      <Project>{d22a2c22-79a2-4ae9-b3f7-a0a14fce76a1}</Project>
+      <Name>HamiltonianCircuit</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

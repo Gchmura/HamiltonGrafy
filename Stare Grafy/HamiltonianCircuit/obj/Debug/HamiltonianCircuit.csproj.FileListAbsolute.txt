@@ -29,3 +29,13 @@ C:\Users\Liberator\Desktop\INFMAG\sem 1\hamilton\C#\HamiltonianCircuit\obj\Debug
 E:\repositories\HamiltonGrafy\C#\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe.config
 E:\repositories\HamiltonGrafy\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
 E:\repositories\HamiltonGrafy\C#\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe.config
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.exe
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\bin\Debug\HamiltonianCircuit.pdb
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csprojAssemblyReference.cache
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.MainForm.resources
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.Properties.Resources.resources
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.GenerateResource.cache
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.exe
+C:\Users\user\Desktop\HamiltonGrafy\Stare Grafy\HamiltonianCircuit\obj\Debug\HamiltonianCircuit.pdb
