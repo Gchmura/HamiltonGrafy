@@ -69,7 +69,19 @@ namespace Grafy_mag
 					}
 				}
 			}
-		}
+            if (Files.Count() == 0)
+            {
+                MessageBox.Show("No csv files foound!");
+                labelPath.Text = "Choose correct directory";
+
+            }
+            else
+            {
+                labelPath.Text = "Path: " + path;
+
+            }
+
+        }
 		private void ButtonDatasetLocation_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
@@ -86,9 +98,11 @@ namespace Grafy_mag
 				}
 
 			}
-		}
+            labelPath.Text = "Path: " + path;
 
-		void Form1_Load(object sender, EventArgs e)
+        }
+
+        void Form1_Load(object sender, EventArgs e)
 		{
 			wpfHost.Child = GenerateWpfVisuals();
 			_gArea.GenerateGraph(true);

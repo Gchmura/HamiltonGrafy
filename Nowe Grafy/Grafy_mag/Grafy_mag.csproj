@@ -108,9 +108,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
-    <None Include="permutacje1.csv" />
-    <None Include="permutacje2.csv" />
-    <None Include="permutacje3.csv" />
+    <None Include="permutacje\file1.csv" />
+    <None Include="permutacje\file2.csv" />
+    <None Include="permutacje\file3.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
