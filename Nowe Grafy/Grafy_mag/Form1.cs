@@ -25,6 +25,7 @@ using System.Windows.Media;
 using HamiltonianCircuit;
 using Color = System.Windows.Media.Color;
 using MessageBox = System.Windows.MessageBox;
+using System.Drawing.Imaging;
 
 namespace Grafy_mag
 {
@@ -437,11 +438,24 @@ namespace Grafy_mag
         {
             System.Diagnostics.Process.Start(@"C:\Users\"+ Environment.UserName + @"\Desktop\HamiltonGrafy\Nowe Grafy\Grafy_mag\permutacje\file1.csv");
         }
+
+        private void roundButton3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                int width = Convert.ToInt32(wpfHost.Width);
+                int height = Convert.ToInt32(wpfHost.Height);
+                Bitmap bmp = new Bitmap(width, height);
+                wpfHost.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
+                bmp.Save(dialog.FileName + ".jpeg", ImageFormat.Jpeg);
+            }
+        }
     }
 
     public class EdgeColorConverter : IValueConverter
 	{
-
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
 		{
 			return new SolidColorBrush((System.Windows.Media.Color)value);

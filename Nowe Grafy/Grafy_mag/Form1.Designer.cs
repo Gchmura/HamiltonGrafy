@@ -50,6 +50,7 @@
             this.labelPath = new System.Windows.Forms.Label();
             this.roundButton1 = new Grafy_mag.RoundButton();
             this.roundButton2 = new Grafy_mag.RoundButton();
+            this.roundButton3 = new Grafy_mag.RoundButton();
             this.SuspendLayout();
             // 
             // wpfHost
@@ -301,12 +302,24 @@
             this.roundButton2.UseVisualStyleBackColor = true;
             this.roundButton2.Click += new System.EventHandler(this.roundButton2_Click);
             // 
+            // roundButton3
+            // 
+            this.roundButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.roundButton3.Location = new System.Drawing.Point(0, 780);
+            this.roundButton3.Name = "roundButton3";
+            this.roundButton3.Size = new System.Drawing.Size(70, 34);
+            this.roundButton3.TabIndex = 27;
+            this.roundButton3.Text = "Save";
+            this.roundButton3.UseVisualStyleBackColor = true;
+            this.roundButton3.Click += new System.EventHandler(this.roundButton3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1102, 815);
+            this.Controls.Add(this.roundButton3);
             this.Controls.Add(this.roundButton2);
             this.Controls.Add(this.roundButton1);
             this.Controls.Add(this.labelPath);
@@ -360,6 +373,7 @@
         private System.Windows.Forms.Label labelPath;
         private RoundButton roundButton1;
         private RoundButton roundButton2;
+        private RoundButton roundButton3;
     }
 }
 
