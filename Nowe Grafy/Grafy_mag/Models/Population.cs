@@ -15,6 +15,20 @@ namespace Grafy_mag.Models
         {
             return Nodes != null ? Helper.CountCost(perms, Nodes) : Int32.MaxValue;
         }
+
+        public string GetCyclesString()
+        {
+            string ToReturn = "";
+            for (int i = 0; i < Nodes.Count(); i++)
+            {
+                ToReturn += Nodes[i].ToString() + "-";
+            }
+            if (ToReturn.Last() == '-')
+            {
+                ToReturn = ToReturn.Remove(ToReturn.Length - 1);
+            }
+            return ToReturn;
+        }
     }
 
     public class Population

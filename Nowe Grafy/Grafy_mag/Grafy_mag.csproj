@@ -83,6 +83,7 @@
     <Compile Include="Models\GraphAreaGeneric.cs" />
     <Compile Include="Models\GraphGeneric.cs" />
     <Compile Include="Models\GXLogicCoreGeneric.cs" />
+    <Compile Include="Models\ListViewCycle.cs" />
     <Compile Include="Models\Population.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

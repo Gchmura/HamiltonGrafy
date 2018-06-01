@@ -52,7 +52,53 @@ namespace Grafy_mag
 			Load += Form1_Load;
 		}
 
-		void InitData()
+        public static void UpdatePareto(List<Cycle> cycles, Population population, int[][][] perms)
+        {
+            foreach (var cycle in population.Cycles)
+            {
+                for (int i = 0; i < perms.GetLength(0); i++)
+                {
+                    if (cycles.Any(x => cycle.GetCost(perms[i]) < x.GetCost(perms[i])))
+                    {
+                        CleanPareto(cycles, cycle, perms);
+                        cycles.Add(cycle);
+                        break;
+                    }
+                }
+            }
+        }
+
+        static void CleanPareto(List<Cycle> cycles, Cycle newCycle, int[][][] perms)
+        {
+            bool canStay = false;
+            List<Cycle> toDelete = new List<Cycle>();
+
+            for (int i = 0; i < cycles.Count; i++)
+            {
+                canStay = false;
+
+                for (int j = 0; j < perms.GetLength(0); j++)
+                {
+                    if (cycles[i].GetCost(perms[j]) < newCycle.GetCost(perms[j]))
+                    {
+                        canStay = true;
+                        break;
+                    }
+                }
+
+                if (!canStay)
+                {
+                    toDelete.Add(cycles[i]);
+                }
+            }
+
+            foreach (var item in toDelete)
+            {
+                cycles.Remove(item);
+            }
+        }
+
+        void InitData()
 		{
 
 			DirectoryInfo d = new DirectoryInfo(path);
@@ -357,27 +403,78 @@ namespace Grafy_mag
 
 		private void Btn_start_Click_1(object sender, EventArgs e)
 		{
-			double mutationProbability = Convert.ToDouble(txb_mut_prob.Text, CultureInfo.InvariantCulture);
-			int popCount = Convert.ToInt32(txb_pop_size.Text, CultureInfo.InvariantCulture);
-			int iterations = Convert.ToInt32(txb_iter_count.Text, CultureInfo.InvariantCulture);
+            double mutationProbability = Convert.ToDouble(txb_mut_prob.Text, CultureInfo.InvariantCulture);
+            int popCount = Convert.ToInt32(txb_pop_size.Text, CultureInfo.InvariantCulture);
+            int iterations = Convert.ToInt32(txb_iter_count.Text, CultureInfo.InvariantCulture);
 
-			var pop = new Population(popCount, Vertices.Count);
-			int[][][] matrices = new int[functions][][];
-			for (int i = 0; i < functions; i++)
-			{
-				matrices[i] = MakePermutationsMatrix(i);
-			}
+            var pop = new Population(popCount, Vertices.Count);
+            int[][][] matrices = new int[functions][][];
 
-			int[] sums = new int[iterations + 1];
-			sums[0] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
-			for (int i = 1; i <= iterations; i++)
-			{
-				pop = GeneticIteration.Next(pop, functions, matrices, mutationProbability);
-				sums[i] = pop.Cycles.Sum(x => x.GetCost(matrices[0]));
-			}
-		}
+            for (int i = 0; i < functions; i++)
+            {
+                matrices[i] = MakePermutationsMatrix(i);
+            }
 
-		private void btnHide_Click(object sender, EventArgs e)
+            List<Cycle> pareto = new List<Cycle>();
+            Cycle[] bestCycles = new Cycle[functions];
+            ListViewItem[][] sums = new ListViewItem[functions][];
+
+            for (int k = 0; k < functions; k++)
+            {
+                pareto.Add(pop.GetBest(matrices[k]));
+                bestCycles[k] = pop.GetBest(matrices[k]);
+
+                sums[k] = new ListViewItem[iterations + 1];
+                sums[k][0] = new ListViewItem();
+                sums[k][0].Text = pop.Cycles.Sum(x => x.GetCost(matrices[k])).ToString();
+            }
+
+            for (int i = 1; i <= iterations; i++)
+            {
+                pop = GeneticIteration.Next(pop, functions, matrices, mutationProbability);
+                UpdatePareto(pareto, pop, matrices);
+
+                for (int k = 0; k < functions; k++)
+                {
+                    Cycle currentBest;
+                    if ((currentBest = pop.GetBest(matrices[k])).GetCost(matrices[k]) < bestCycles[k].GetCost(matrices[k]))
+                    {
+                        bestCycles[k] = currentBest;
+                    }
+
+                    sums[k][i] = new ListViewItem();
+                    sums[k][i].Text = pop.Cycles.Sum(x => x.GetCost(matrices[k])).ToString();
+                }
+            }
+
+            List<ListViewCycle> paretoItems = new List<ListViewCycle>();
+
+            foreach (var item in pareto)
+            {
+                paretoItems.Add(new ListViewCycle() { Cycle = item, Text = $"{item.GetCyclesString()} : {item.GetCost(matrices[0])};{item.GetCost(matrices[1])};{item.GetCost(matrices[2])}" });
+            }
+
+            listView4.Items.Clear();
+            listView4.Items.AddRange(paretoItems.ToArray());
+
+            label2.Text = bestCycles[0].GetCyclesString();
+            label3.Text = bestCycles[0].GetCost(matrices[0]).ToString();
+
+            label4.Text = bestCycles[1].GetCyclesString();
+            label5.Text = bestCycles[1].GetCost(matrices[1]).ToString();
+
+            label6.Text = bestCycles[2].GetCyclesString();
+            label7.Text = bestCycles[2].GetCost(matrices[2]).ToString();
+
+            listView1.Items.Clear();
+            listView1.Items.AddRange(sums[0]);
+            listView2.Items.Clear();
+            listView2.Items.AddRange(sums[1]);
+            listView3.Items.Clear();
+            listView3.Items.AddRange(sums[2]);
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
 		{
 			hideOtherEdges = !hideOtherEdges;
 			int[] cycle = Helper.GetRandomCycle(Vertices.Count);
@@ -451,6 +548,53 @@ namespace Grafy_mag
                 wpfHost.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
                 bmp.Save(dialog.FileName + ".jpeg", ImageFormat.Jpeg);
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                visible();
+            }
+            else
+            {
+                unVisible();
+            }
+        }
+
+        public void visible()
+        {
+            listView1.Visible = true;
+            listView2.Visible = true;
+            listView3.Visible = true;
+            listView4.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = true;
+            label6.Visible = true;
+            label7.Visible = true;
+            label9.Visible = true;
+        }
+
+        public void unVisible()
+        {
+            listView1.Visible = false;
+            listView2.Visible = false;
+            listView3.Visible = false;
+            listView4.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+            label7.Visible = false;
+            label9.Visible = false;
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            unVisible();
         }
     }
 
